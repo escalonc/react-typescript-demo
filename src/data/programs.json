@@ -1,0 +1,8 @@
+[
+  { "name": "Visual Studio Code", "option": "a" },
+  { "name": "Adobe Photoshop", "option": "b" },
+  { "name": "Adobe Illustrator", "option": "c" },
+  { "name": "Adobe Premiere", "option": "d" },
+  { "name": "Sublime Text", "option": "e" },
+  { "name": "Spotify", "option": "f" }
+]
