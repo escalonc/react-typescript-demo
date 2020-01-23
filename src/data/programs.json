@@ -1,8 +1,8 @@
 [
-  { "name": "Visual Studio Code", "option": "a" },
-  { "name": "Adobe Photoshop", "option": "b" },
-  { "name": "Adobe Illustrator", "option": "c" },
-  { "name": "Adobe Premiere", "option": "d" },
-  { "name": "Sublime Text", "option": "e" },
-  { "name": "Spotify", "option": "f" }
+  { "name": "Visual Studio Code", "option": 1 },
+  { "name": "Adobe Photoshop", "option": 2 },
+  { "name": "Adobe Illustrator", "option": 3 },
+  { "name": "Adobe Premiere", "option": 4 },
+  { "name": "Sublime Text", "option": 5 },
+  { "name": "Spotify", "option": 6 }
 ]

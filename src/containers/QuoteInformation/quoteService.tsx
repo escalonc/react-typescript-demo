@@ -2,11 +2,11 @@ import quoteValues from "../../data/quoteValues";
 import { QuoteCategory, QuoteValue } from "./models";
 
 export default class QuoteService {
-  private readonly basePriceInUsd = 500;
+  private readonly basePriceInUsd: number = 500;
 
   calcualte(category: QuoteCategory) {
     return quoteValues[category.name].find(
-      value => value.option === category.option
+      value => value.name === category.name
     );
   }
 
