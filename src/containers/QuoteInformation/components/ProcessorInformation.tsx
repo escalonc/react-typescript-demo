@@ -24,6 +24,13 @@ class ProcessorInformation extends Component<ProcessorInformationProps, {}> {
     });
   };
 
+  // componentDidMount() {
+  //   this.props.setQuoteValue({
+  //     name: "processors",
+  //     option: ProcessorOptions.i5
+  //   });
+  // }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (

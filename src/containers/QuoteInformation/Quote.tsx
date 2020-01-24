@@ -22,7 +22,10 @@ class Quote extends Component<QuoteProps, QuoteState> {
   private readonly service: QuoteService = new QuoteService();
 
   state: QuoteState = {
-    quoteValues: [],
+    quoteValues: [
+      { category: "processors", name: "processor-i5", price: 200 },
+      { category: "storage", name: "storage-256", price: 200 }
+    ],
     total: 900,
     customerName: "",
     customerLastName: "",
@@ -34,8 +37,9 @@ class Quote extends Component<QuoteProps, QuoteState> {
 
     let quoteValues: QuoteValue[] = [...this.state.quoteValues];
     const quoteIndex = quoteValues.findIndex(
-      value => value.name === quoteValue.name
+      value => value.category === quoteValue.category
     );
+
     if (quoteIndex === -1) {
       quoteValues.push(quoteValue);
     } else {
@@ -86,7 +90,10 @@ class Quote extends Component<QuoteProps, QuoteState> {
                 form={form}
                 setQuoteValue={this.setQuoteValue}
               />
-              <StorageInformation form={form} />
+              <StorageInformation
+                form={form}
+                setQuoteValue={this.setQuoteValue}
+              />
               <PreInstalledSoftware form={form} />
             </div>
           </Col>
@@ -116,6 +123,7 @@ class Quote extends Component<QuoteProps, QuoteState> {
                   type="primary"
                   htmlType="submit"
                   size="large"
+                  onClick={() => window.print()}
                 >
                   You already have it, Wanna save it?
                 </Button>

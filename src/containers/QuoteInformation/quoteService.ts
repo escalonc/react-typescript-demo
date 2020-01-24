@@ -1,7 +1,7 @@
 import { QuoteCategory, QuoteValue } from "./models";
 
 export interface QuoteData {
-  [category: string]: QuoteValue[];
+  [category: string]: { name: string; price: number }[];
 }
 export default class QuoteService {
   private readonly basePriceInUsd: number = 500;
@@ -25,10 +25,10 @@ export default class QuoteService {
   };
 
   calcualte(category: QuoteCategory) {
-    debugger;
-    return this.data[category.name].find(
-      value => value.name === category.option
-    );
+    return {
+      ...this.data[category.name].find(value => value.name === category.option),
+      category: category.name
+    } as QuoteValue;
   }
 
   sum(quoteValues: QuoteValue[]) {

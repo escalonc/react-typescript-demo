@@ -5,5 +5,6 @@ export interface QuoteCategory {
 
 export interface QuoteValue {
   name: string;
+  category: string;
   price: number;
 }
