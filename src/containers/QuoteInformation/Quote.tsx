@@ -5,7 +5,7 @@ import StorageInformation from "./components/StorageInformation";
 import PreInstalledSoftware from "./components/PreInstalledSoftware";
 import Form, { FormComponentProps } from "antd/lib/form/Form";
 import { Row, Col, Card, Button } from "antd";
-import { QuoteValue } from "./models";
+import { QuoteValue, QuoteCategory } from "./models";
 import QuoteService from "./quoteService";
 
 export interface QuoteProps extends FormComponentProps {}
@@ -29,12 +29,14 @@ class Quote extends Component<QuoteProps, QuoteState> {
     email: ""
   };
 
-  setQuoteValue = (quoteValue: QuoteValue) => {
+  setQuoteValue = (quoteCategory: QuoteCategory) => {
+    const quoteValue = this.service.calcualte(quoteCategory)!;
+
     let quoteValues: QuoteValue[] = [...this.state.quoteValues];
     const quoteIndex = quoteValues.findIndex(
       value => value.name === quoteValue.name
     );
-    if (quoteIndex !== -1) {
+    if (quoteIndex === -1) {
       quoteValues.push(quoteValue);
     } else {
       quoteValues[quoteIndex] = quoteValue;
@@ -80,7 +82,10 @@ class Quote extends Component<QuoteProps, QuoteState> {
                 setCustomerName={this.setCustomerName}
                 setEmail={this.setEmail}
               />
-              <ProcessorInformation form={form} />
+              <ProcessorInformation
+                form={form}
+                setQuoteValue={this.setQuoteValue}
+              />
               <StorageInformation form={form} />
               <PreInstalledSoftware form={form} />
             </div>

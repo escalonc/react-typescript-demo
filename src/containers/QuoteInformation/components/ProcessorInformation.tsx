@@ -2,13 +2,27 @@ import React, { Component } from "react";
 import { Card, Form, Radio } from "antd";
 import { WrappedFormUtils } from "antd/lib/form/Form";
 import { RadioChangeEvent } from "antd/lib/radio";
+import { QuoteCategory } from "../models";
 
 interface ProcessorInformationProps {
   form: WrappedFormUtils;
+  setQuoteValue(quoteCategory: QuoteCategory): void;
+}
+
+enum ProcessorOptions {
+  i5 = "processor-i5",
+  i7 = "processor-i7",
+  i9 = "processor-i9"
 }
 
 class ProcessorInformation extends Component<ProcessorInformationProps, {}> {
-  processorHandler = (event: RadioChangeEvent) => {};
+  processorHandler = (event: RadioChangeEvent) => {
+    console.log(event.target.value);
+    this.props.setQuoteValue({
+      name: "processors",
+      option: event.target.value
+    });
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -18,12 +32,12 @@ class ProcessorInformation extends Component<ProcessorInformationProps, {}> {
         <Card>
           <Form.Item>
             {getFieldDecorator("processor", {
-              initialValue: "a"
+              initialValue: ProcessorOptions.i5
             })(
               <Radio.Group buttonStyle="solid" onChange={this.processorHandler}>
-                <Radio.Button value="a">Core i5</Radio.Button>
-                <Radio.Button value="b">Core i7</Radio.Button>
-                <Radio.Button value="c">Core i9</Radio.Button>
+                <Radio.Button value={ProcessorOptions.i5}>Core i5</Radio.Button>
+                <Radio.Button value={ProcessorOptions.i7}>Core i7</Radio.Button>
+                <Radio.Button value={ProcessorOptions.i9}>Core i9</Radio.Button>
               </Radio.Group>
             )}
           </Form.Item>

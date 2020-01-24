@@ -1,6 +1,10 @@
 import { QuoteValue } from "../containers/QuoteInformation/models";
 
-const data: { [key: string]: QuoteValue[] } = {
+export interface QuoteData {
+  [category: string]: QuoteValue[];
+}
+
+const data: QuoteData = {
   processors: [
     { name: "processor-i5", price: 200 },
     { name: "processor-i7", price: 400 },
