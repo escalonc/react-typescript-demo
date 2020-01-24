@@ -24,17 +24,11 @@ export default class QuoteService {
     ]
   };
 
-  calcualte(category: QuoteCategory) {
-    return {
-      ...this.data[category.name].find(value => value.name === category.option),
-      category: category.name
-    } as QuoteValue;
-  }
+  //implement retuns quoteValue
+  calcualte(category: QuoteCategory) {}
 
+  //implement retunrs number
   sum(quoteValues: QuoteValue[]) {
-    return (
-      quoteValues.reduce((previous, current) => previous + current.price, 0) +
-      this.basePriceInUsd
-    );
+    return 0;
   }
 }

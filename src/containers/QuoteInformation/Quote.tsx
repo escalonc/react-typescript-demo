@@ -8,20 +8,14 @@ import { Row, Col, Card, Button } from "antd";
 import { QuoteValue, QuoteCategory } from "./models";
 import QuoteService from "./quoteService";
 
-export interface QuoteProps extends FormComponentProps {}
+//implement Props
 
-export interface QuoteState {
-  total: number;
-  quoteValues: QuoteValue[];
-  customerName: string;
-  customerLastName: string;
-  email: string;
-}
+//implement State
 
-class Quote extends Component<QuoteProps, QuoteState> {
+class Quote extends Component {
   private readonly service: QuoteService = new QuoteService();
 
-  state: QuoteState = {
+  state = {
     quoteValues: [
       { category: "processors", name: "processor-i5", price: 200 },
       { category: "storage", name: "storage-256", price: 200 }
@@ -32,23 +26,9 @@ class Quote extends Component<QuoteProps, QuoteState> {
     email: ""
   };
 
+  //implement
   setQuoteValue = (quoteCategory: QuoteCategory) => {
-    const quoteValue = this.service.calcualte(quoteCategory)!;
 
-    let quoteValues: QuoteValue[] = [...this.state.quoteValues];
-    const quoteIndex = quoteValues.findIndex(
-      value => value.category === quoteValue.category
-    );
-
-    if (quoteIndex === -1) {
-      quoteValues.push(quoteValue);
-    } else {
-      quoteValues[quoteIndex] = quoteValue;
-    }
-
-    const total = this.service.sum(quoteValues);
-
-    this.setState({ quoteValues, total });
   };
 
   setCustomerName = (customerName: string) => {
@@ -123,7 +103,7 @@ class Quote extends Component<QuoteProps, QuoteState> {
                   type="primary"
                   htmlType="submit"
                   size="large"
-                  onClick={() => window.print()}
+                  onClick={ // implement save as pdf }
                 >
                   You already have it, Wanna save it?
                 </Button>

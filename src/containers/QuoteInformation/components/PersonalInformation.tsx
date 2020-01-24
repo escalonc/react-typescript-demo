@@ -2,26 +2,18 @@ import React, { Component } from "react";
 import { Card, Form, Input, Row, Col } from "antd";
 import { WrappedFormUtils } from "antd/lib/form/Form";
 
-interface PersonalInformationProps {
-  form: WrappedFormUtils;
-  setCustomerName(name: string): void;
-  setCustomerLastName(lastName: string): void;
-  setEmail(email: string): void;
-}
+//implement props
 
-export default class PersonalInformation extends Component<
-  PersonalInformationProps,
-  {}
-> {
-  nameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+export default class PersonalInformation extends Component {
+  nameHandler = (event) => {
     this.props.setCustomerName(event.target.value);
   };
 
-  lastNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  lastNameHandler = (event) => {
     this.props.setCustomerLastName(event.target.value);
   };
 
-  emailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  emailHandler = (event) => {
     this.props.setEmail(event.target.value);
   };
 

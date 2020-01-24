@@ -4,16 +4,8 @@ import { WrappedFormUtils } from "antd/lib/form/Form";
 import { RadioChangeEvent } from "antd/lib/radio";
 import { QuoteCategory } from "../models";
 
-interface ProcessorInformationProps {
-  form: WrappedFormUtils;
-  setQuoteValue(quoteCategory: QuoteCategory): void;
-}
-
-enum ProcessorOptions {
-  i5 = "processor-i5",
-  i7 = "processor-i7",
-  i9 = "processor-i9"
-}
+//implement ProcessorInformationProps
+//implement ProcessorOptions
 
 class ProcessorInformation extends Component<ProcessorInformationProps, {}> {
   processorHandler = (event: RadioChangeEvent) => {
@@ -23,13 +15,6 @@ class ProcessorInformation extends Component<ProcessorInformationProps, {}> {
       option: event.target.value
     });
   };
-
-  // componentDidMount() {
-  //   this.props.setQuoteValue({
-  //     name: "processors",
-  //     option: ProcessorOptions.i5
-  //   });
-  // }
 
   render() {
     const { getFieldDecorator } = this.props.form;
